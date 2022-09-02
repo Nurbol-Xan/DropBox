@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import { signUpUser } from "../../redux/actionCreators/authActionCreator";
 
 const RegisterForm = () => {
     const [name, setName] = useState("");
@@ -6,8 +8,24 @@ const RegisterForm = () => {
     const [password, setPassword] = useState("");
     const [passwordCon, setPasswordCon] = useState("");
 
+    const dispatch = useDispatch();
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        if(!name || !email || !password || !passwordCon){
+            alert("Please fill in all fields");
+            return;
+        }
+        if(password !== passwordCon){
+            alert("Password do not match");
+            return;
+        }
+
+        dispatch(signUpUser(name, email, password));
+    }
+
     return(
-        <form>
+        <form autoComplete="off" onSubmit={handleSubmit}>
             <div className="form-group my-2">
                 <input 
                 type="text"
