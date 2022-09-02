@@ -1,10 +1,10 @@
-
 import './App.css';
+import { HomePage } from './pages/HomePage/HomePages';
 
 const App = () => {
   return (
     <div className="App">
-      <h1>Hello World</h1>
+      <HomePage />
     </div>
   );
 }
