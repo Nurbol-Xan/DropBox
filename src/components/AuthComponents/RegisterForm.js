@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import { signUpUser } from "../../redux/actionCreators/authActionCreator";
 
 const RegisterForm = () => {
@@ -7,8 +8,10 @@ const RegisterForm = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [passwordCon, setPasswordCon] = useState("");
+    const [success, setSuccess] = useState(false);
 
     const dispatch = useDispatch();
+    const navigate = useNavigate();
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -21,8 +24,14 @@ const RegisterForm = () => {
             return;
         }
 
-        dispatch(signUpUser(name, email, password));
+        dispatch(signUpUser(name, email, password, setSuccess));
     }
+
+    useEffect(() => {
+        if(success) {
+            navigate("/dashboard");
+        }
+    }, [success]);
 
     return(
         <form autoComplete="off" onSubmit={handleSubmit}>

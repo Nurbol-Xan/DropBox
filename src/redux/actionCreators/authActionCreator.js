@@ -3,7 +3,7 @@ import fire  from "../../config/firebase";
 
 const loginUser = (payload) => {
     return {
-        type: types.LOGIN_USER,
+        type: types.SIGN_IN,
         payload
     }
 }
@@ -16,20 +16,53 @@ const logoutUser = () => {
 }
 
 
-export const signInUser = (email, password) => (dispatch) => {
+export const signInUser = (email, password, setSuccess) => (dispatch) => {
     fire
         .auth()
         .signInWithEmailAndPassword(email, password)
         .then((user) => {
-            console.log(user);
+            dispatch(
+                    loginUser({
+                    uid: user.user.uid, 
+                    email: user.user.email,
+                    displayName: user.user.displayName
+                })
+            );
+            setSuccess(true);
         })
         .catch((error) => {
             alert("Invalid email or password!");
         })
 }
 
-export const signUpUser = (name, email, password) => (dispatch) => {
-    console.log(name, email, password);
+export const signUpUser = (name, email, password, setSuccess) => (dispatch) => {
+    fire.auth().createUserWithEmailAndPassword(email, password).then((user) => {
+        fire.auth().currentUser.updateProfile({
+            displayName: name,
+        }).then(() => {
+            const currentUser = fire.auth().currentUser;
+            dispatch(
+                loginUser({
+                    uid: currentUser.uid, 
+                    name: currentUser.displayName, 
+                    email: currentUser.email, 
+                })
+            );
+            setSuccess(true);
+        }).catch((error) => {
+            console.log(error);
+        })
+    }).catch((error) => {
+        if(error.code === "auth/email-already-in-use") {
+            alert("Email already in use!");
+        }
+        if(error.code === "auth/invalid-email") {
+            alert("Invalid email!");
+        }
+        if(error.code === "auth/weak-password") {
+            alert("Weak password!");
+        }
+    })
 }
 
 export const SignOutUser = () => (dispatch) => {
