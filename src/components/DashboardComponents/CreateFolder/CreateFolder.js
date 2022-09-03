@@ -1,17 +1,19 @@
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { useState } from "react";
+import { createFolder } from "../../../redux/actionCreators/fileFolderActionCreator";
 import { shallowEqual, useDispatch, useSelector } from "react-redux";
 
 const CreateFolder = ({setIsCreateFolderModalOpen}) => {
     const [ foldername, setFoldername ] = useState("");
+
     const { userFolders, user, currentFolder } = useSelector((state) => ({
         userFolders: state.filefolders.userFolders,
         user: state.auth.user,
         currentFolder: state.filefolders.currentFolder,
     }), shallowEqual);
 
-    const dispatch = useDispatch(0);
+    const dispatch = useDispatch();
 
     const checkFolderAlreadyPresent = (name) => {
         const folderPresent = userFolders.find((folder) => folder.name === name);
@@ -34,8 +36,7 @@ const CreateFolder = ({setIsCreateFolderModalOpen}) => {
                         updateAt: null,
                         userId: user.uid,
                     }
-                    dispatch(CreateFolder(data));
-                    // console.log(data);
+                    dispatch(createFolder(data));
                 }else alert("Folder already present!");
             }else{
                 alert("Folder name must be at least 3 characters!");
