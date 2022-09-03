@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import HomeComponent from "../../components/DashboardComponents/HomeComponent/HomeComponent";
 import Navbar from "../../components/DashboardComponents/Navbar/Navbar"
 import SubBar from "../../components/DashboardComponents/SubBar/SubBar";
 
@@ -18,6 +19,7 @@ const DashboardPage = () => {
         <>
             <Navbar />
             <SubBar />
+            <HomeComponent />
         </>
     )
 }
