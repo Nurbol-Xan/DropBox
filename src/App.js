@@ -1,8 +1,17 @@
 import './App.css';
 import { Route, Routes} from "react-router-dom";
 import { Login, Register, HomePage, DashboardPage } from './pages';
+import { useDispatch } from 'react-redux';
+import { useEffect } from 'react';
+import { checkIsLoggedIn } from './redux/actionCreators/authActionCreator';
 
 const App = () => {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(checkIsLoggedIn());
+  })
+
   return (
     <div className="App">
       <Routes>

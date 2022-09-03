@@ -36,7 +36,8 @@ export const signInUser = (email, password, setSuccess) => (dispatch) => {
 }
 
 export const signUpUser = (name, email, password, setSuccess) => (dispatch) => {
-    fire.auth().createUserWithEmailAndPassword(email, password).then((user) => {
+    fire.auth().createUserWithEmailAndPassword(email, password)
+    .then((user) => {
         fire.auth().currentUser.updateProfile({
             displayName: name,
         }).then(() => {
@@ -66,5 +67,19 @@ export const signUpUser = (name, email, password, setSuccess) => (dispatch) => {
 }
 
 export const SignOutUser = () => (dispatch) => {
-    dispatch(logoutUser());
+    fire.auth().signOut().then(() => {
+        dispatch(logoutUser());
+    })
+}
+
+export const checkIsLoggedIn = () => (dispatch) => {
+    fire.auth().onAuthStateChanged(user => {
+        if(user){
+            dispatch(loginUser({
+                uid: user.uid,
+                email: user.email,
+                displayName: user.displayName,
+            }))
+        }
+    })
 }
