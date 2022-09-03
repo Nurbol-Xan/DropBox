@@ -15,14 +15,14 @@ const NavigationComponent = () => {
                 {
                     isAuthenticated ? (
                         <>
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <li className="nav-item dropdown">
+                                <a className="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                     {user.displayName}
                                 </a>
-                                <ul class="dropdown-menu dropdown-menu-end dropdown-menu-dark" aria-labelledby="navbarScrollingDropdown">
-                                    <li><Link class="dropdown-item" to="/dashboard">Dashboard</Link></li>
-                                    <li><hr class="dropdown-divider" /></li>
-                                    <li><button class="dropdown-item" onClick={() => dispatch(SignOutUser())}>Sign Out</button></li>
+                                <ul className="dropdown-menu dropdown-menu-end dropdown-menu-dark" aria-labelledby="navbarScrollingDropdown">
+                                    <li><Link className="dropdown-item" to="/dashboard">Dashboard</Link></li>
+                                    <li><hr className="dropdown-divider" /></li>
+                                    <li><button className="dropdown-item" onClick={() => dispatch(SignOutUser())}>Sign Out</button></li>
                                 </ul>
                             </li>
                         </>
