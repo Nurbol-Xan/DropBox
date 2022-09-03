@@ -1,15 +1,17 @@
 import * as types from "../actions/authActions";
 import fire  from "../../config/firebase";
 
-const loginUser = (payload) => {
-    return {
+export const loginUser = (payload) => {
+    if(payload) return {
         type: types.SIGN_IN,
         payload
     }
+    return {
+        type: types.SIGN_OUT,
+    };
 }
 
-
-const logoutUser = () => {
+export const logoutUser = () => {
     return{
         type: types.SIGN_OUT,
     }
@@ -65,6 +67,7 @@ export const signUpUser = (name, email, password, setSuccess) => (dispatch) => {
     })
 }
 
-export const SignOutUser = () => (dispatch) => {
+export const SignOutUser = (setSuccess) => (dispatch) => {
     dispatch(logoutUser());
+    setSuccess(true);
 }
