@@ -1,4 +1,4 @@
-import './App.css';
+import '../src/CSS/App.css';
 import { Route, Routes} from "react-router-dom";
 import { Login, Register, HomePage, DashboardPage } from './pages';
 import { useDispatch } from 'react-redux';
