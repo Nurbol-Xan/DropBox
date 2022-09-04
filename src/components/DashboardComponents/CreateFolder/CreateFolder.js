@@ -33,9 +33,9 @@ const CreateFolder = ({setIsCreateFolderModalOpen}) => {
                         name: foldername,
                         parent: currentFolder,
                         path: currentFolder === "root" ? []: ["parent folder path!"],
-                        updateAt: null,
+                        updateAt: new Date(),
                         userId: user.uid,
-                    }
+                    };
                     dispatch(createFolder(data));
                 }else alert("Folder already present!");
             }else{

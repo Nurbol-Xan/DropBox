@@ -1,5 +1,5 @@
 import * as types from "../actions/fileFolderActionTypes";
-import fire from "../../config/firebase";
+import  firestore  from "../../config/firebase";
 // import { getFirestore } from "firebase/firestore";
 
 const addFolder = (payload) => ({
@@ -8,11 +8,15 @@ const addFolder = (payload) => ({
 });
 
 export const createFolder = (data) => (dispatch) => {
-    fire
+    // console.log(data);
+    // console.log(firestore.firestore().collection("folder").app(data).then((folder) => {dispatch.addFolder(folder)}));
+    firestore
         .firestore()
         .collection("folders")
-        .app(data)
-        .then((folder) => {
-            dispatch(addFolder(folder));
+        .add(data)
+        .then(async (folder) => {
+            const folderData = await (await folder.get()).data();
+            dispatch(addFolder(folderData));
+            alert("Folder created successfully!");
         });
 }
