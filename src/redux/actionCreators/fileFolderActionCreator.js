@@ -1,5 +1,6 @@
 import * as types from "../actions/fileFolderActionTypes";
 import  firestore  from "../../config/firebase";
+// import { type } from "@testing-library/user-event/dist/type";
 // import { getFirestore } from "firebase/firestore";
 
 const addFolder = (payload) => ({
@@ -14,6 +15,11 @@ const addFolders = (payload) => ({
 
 const setLoading = (payload) => ({
     type: types.SET_LOADING,
+    payload,
+});
+
+const setChangeFolder = (payload) => ({
+    type: types.CHANGE_FOLDER,
     payload,
 });
 
@@ -32,7 +38,6 @@ export const createFolder = (data) => (dispatch) => {
         });
 }
 
-
 export const getFolders = (userId) => (dispatch) => {
     dispatch(setLoading(true));
     firestore
@@ -43,11 +48,14 @@ export const getFolders = (userId) => (dispatch) => {
     .then(async (folders) => {
         const foldersData = await folders.docs.map((folder) => ({
             data: folder.data(),
-            docId: folder.id,
         }));
         dispatch(addFolders(foldersData));
         dispatch(setLoading(false));
     })
+}
+
+export const changeFolder = (folderId) => (dispatch) => {
+    dispatch(setChangeFolder(folderId));
 }
 
 

@@ -3,7 +3,7 @@ import ShowItems from "../ShowItems/ShowItems";
 
 const HomeComponent = () => {
     // const folders = ["New Folder", "new folder 2"];
-    const files = [{name: "New file"}, {name: "second file"}];
+    const files = [{data:{ name: "New file"}}, {data: {name: "second file"}}];
 
     const { isLoading, userFolders} = useSelector(
         (state) => ({
