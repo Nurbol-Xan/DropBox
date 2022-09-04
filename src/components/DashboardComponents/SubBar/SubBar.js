@@ -5,7 +5,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { shallowEqual, useDispatch, useSelector } from "react-redux";
 import { changeFolder } from "../../../redux/actionCreators/fileFolderActionCreator";
 
-const SubBar = ({ setIsCreateFolderModalOpen }) => {
+const SubBar = ({ setIsCreateFolderModalOpen, setIsCreateFileModalOpen }) => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
 
@@ -55,7 +55,7 @@ const SubBar = ({ setIsCreateFolderModalOpen }) => {
                             ) : (
                                 <>
                                     <li className="breadcrumb-item active">
-                                        {currentFolderData?.data.name}
+                                        Root
                                     </li>
                                 </>
                             )
@@ -69,7 +69,7 @@ const SubBar = ({ setIsCreateFolderModalOpen }) => {
                         <FontAwesomeIcon icon={faFileUpload} /> &nbsp; Upload file</button>
                     </li>
                     <li className="nav-item mx-2">
-                        <button className="btn btn-outline-dark"><FontAwesomeIcon icon={faFileCirclePlus} />&nbsp; Create file</button>
+                        <button className="btn btn-outline-dark" onClick={() => setIsCreateFileModalOpen(true)}><FontAwesomeIcon icon={faFileCirclePlus} />&nbsp; Create file</button>
                     </li>
                     <li className="nav-item mx-2">
                         <button className="btn btn-outline-dark" onClick={() => setIsCreateFolderModalOpen(true)}><FontAwesomeIcon icon={faFolderPlus} />&nbsp; Create folder</button>

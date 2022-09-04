@@ -23,6 +23,18 @@ const setChangeFolder = (payload) => ({
     payload,
 });
 
+// files
+
+const addFiles = (payload) => ({
+    type: types.ADD_FILES,
+    payload,
+})
+
+const addFile = (payload) => ({
+    type: types.CREATE_FILE,
+    payload,
+}) 
+
 export const createFolder = (data) => (dispatch) => {
     // console.log(data);
     // console.log(firestore.firestore().collection("folder").app(data).then((folder) => {dispatch.addFolder(folder)}));
@@ -60,3 +72,38 @@ export const changeFolder = (folderId) => (dispatch) => {
 }
 
 
+// files
+
+export const getFiles = (userId) => (dispatch) => {
+    firestore
+    .firestore()
+    .collection("files")
+    .where("userId", "==", userId)
+    .get()
+    .then(async (files) => {
+        const filesData = await files.docs.map((file) => ({
+            data: file.data(),
+            docId: file.id,
+        }));
+        dispatch(addFiles(filesData));
+        // dispatch(setLoading(false));
+    })
+}
+
+export const createFile = (data, setSuccess) => (dispatch) => {
+    // console.log(data);
+    firestore
+    .firestore()
+    .collection("files")
+    .add(data)
+    .then(async (file) => {
+        const fileData = await (await file.get()).data();
+        const fileId = file.id;
+        alert("File created successfully!");
+        dispatch(addFile({data: fileData, docId: fileId}));
+        setSuccess(true);
+    })
+    .catch(() => {
+        setSuccess(false);
+    })
+}

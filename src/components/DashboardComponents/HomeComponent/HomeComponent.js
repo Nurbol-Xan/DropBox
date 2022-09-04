@@ -3,13 +3,16 @@ import ShowItems from "../ShowItems/ShowItems";
 
 const HomeComponent = () => {
     // const folders = ["New Folder", "new folder 2"];
-    const files = [{data:{ name: "New file"}}, {data: {name: "second file"}}];
+    // const files = [{data:{ name: "New file"}}, {data: {name: "second file"}}];
 
-    const { isLoading, userFolders} = useSelector(
+    const { isLoading, userFolders, userFiles } = useSelector(
         (state) => ({
             isLoading: state.filefolders.isLoading,
             userFolders: state.filefolders.userFolders.filter(
                 (folder) => folder.data.parent === "root"
+            ),
+            userFiles: state.filefolders.userFiles.filter(
+                (file) => file.data.parent === "root"
             ),
         }),
         shallowEqual
@@ -23,7 +26,9 @@ const HomeComponent = () => {
                 ) : (
                     <>
                     <ShowItems title={"Created Folders"} type={"folder"} items={userFolders} />
-                    <ShowItems title={"Create Files"} type={"file"} items={files} />
+                    <ShowItems title={"Create Files"} type={"file"} items={
+                        userFiles.filter((file) => file.data.url === null)
+                    } />
                     </>
                 )
             }
