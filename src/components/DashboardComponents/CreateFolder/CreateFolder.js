@@ -7,18 +7,24 @@ import { shallowEqual, useDispatch, useSelector } from "react-redux";
 const CreateFolder = ({setIsCreateFolderModalOpen}) => {
     const [ foldername, setFoldername ] = useState("");
 
-    const { userFolders, user, currentFolder } = useSelector((state) => ({
+    const { userFolders, user, currentFolder, currentFolderData } = useSelector((state) => ({
         userFolders: state.filefolders.userFolders,
         user: state.auth.user,
         currentFolder: state.filefolders.currentFolder,
+        currentFolderData: state.filefolders.userFolders
+        .find(folder => 
+            folder.docId === state.filefolders.currentFolder
+        ), 
     }), shallowEqual);
 
     const dispatch = useDispatch();
 
     const checkFolderAlreadyPresent = (name) => {
-        const folderPresent = userFolders.find((folder) => folder.name === name);
-        if(folderPresent) return true;
-        else return false;
+            const folderPresent = userFolders.filter((folder) => folder.data.parent === currentFolder)
+            .find((folder) => folder.data.name === name);
+            if(folderPresent) return true;
+            else return false;
+        
     };
 
     const handleSubmit = (e) => {
@@ -32,7 +38,7 @@ const CreateFolder = ({setIsCreateFolderModalOpen}) => {
                         lastAccessed: null,
                         name: foldername,
                         parent: currentFolder,
-                        path: currentFolder === "root" ? []: ["parent folder path!"],
+                        path: currentFolder === "root" ? []: [...currentFolderData?.data.path, currentFolder],
                         updateAt: new Date(),
                         userId: user.uid,
                     };

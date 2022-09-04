@@ -48,6 +48,7 @@ export const getFolders = (userId) => (dispatch) => {
     .then(async (folders) => {
         const foldersData = await folders.docs.map((folder) => ({
             data: folder.data(),
+            docId: folder.id,
         }));
         dispatch(addFolders(foldersData));
         dispatch(setLoading(false));

@@ -8,7 +8,9 @@ const HomeComponent = () => {
     const { isLoading, userFolders} = useSelector(
         (state) => ({
             isLoading: state.filefolders.isLoading,
-            userFolders: state.filefolders.userFolders,
+            userFolders: state.filefolders.userFolders.filter(
+                (folder) => folder.data.parent === "root"
+            ),
         }),
         shallowEqual
     )
