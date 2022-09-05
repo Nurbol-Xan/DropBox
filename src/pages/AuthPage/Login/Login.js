@@ -1,4 +1,4 @@
-import React,{ useState, useEffect, useRef } from "react";
+import React,{ useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { Link,useNavigate } from "react-router-dom";
 import LoginForm from "../../../components/AuthComponents/LoginForm";
@@ -61,7 +61,7 @@ const Login = () => {
         if (success) {
             navigate("/dashboard")
         }
-    },[success])
+    },[success,navigate])
     
     return(
         <div class="row m-5 no-gutters shadow-lg">

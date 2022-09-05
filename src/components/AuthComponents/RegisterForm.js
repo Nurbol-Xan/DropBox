@@ -45,15 +45,15 @@ const RegisterForm = () => {
         if(success) {
             navigate("/dashboard");
         }
-    }, [success]);
+    }, [success,navigate]);
 
     return(
-        <form autoComplete="off" className="w-100" onSubmit={handleSubmit}>
+        <form autoComplete="off" onSubmit={handleSubmit}>
             <div className="form-group my-2">
                 <input 
                 type="text"
                 name="name"
-                className="form-control px-2"
+                className="form-control"
                 placeholder="Name"
                 value={name} 
                 onChange={(e) => setName(e.target.value)} />
@@ -62,7 +62,7 @@ const RegisterForm = () => {
                 <input 
                 type="email"
                 name="email"
-                className="form-control px-2"
+                className="form-control"
                 placeholder="Email"
                 value={email} 
                 onChange={(e) => setEmail(e.target.value)} />
@@ -71,16 +71,16 @@ const RegisterForm = () => {
                 <input 
                 type="password"
                 name="password"
-                className="form-control px-2"
+                className="form-control"
                 placeholder="Password"
                 value={password} 
                 onChange={(e) => setPassword(e.target.value)} />
             </div>
-            <div className="form-group my-2 ">
+            <div className="form-group my-2">
                 <input 
                 type="password"
                 name="passwordCon"
-                className="form-control px-2"
+                className="form-control"
                 placeholder="Password Confirmation"
                 value={passwordCon} 
                 onChange={(e) => setPasswordCon(e.target.value)} />

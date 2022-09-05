@@ -15,9 +15,9 @@ const Navbar = () => {
                     isAuthenticated ? (
                         <>
                             <li className="nav-item dropdown">
-                                <a className="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <div className="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                     {user.displayName}
-                                </a>
+                                </div>
                                 <ul className="dropdown-menu dropdown-menu-end dropdown-menu-dark" aria-labelledby="navbarScrollingDropdown">
                                     <li><Link className="dropdown-item" to="/">Home</Link></li>
                                     <li><hr className="dropdown-divider" /></li>

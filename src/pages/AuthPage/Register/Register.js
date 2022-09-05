@@ -61,7 +61,7 @@ const Register = () => {
         if (success) {
             navigate("/dashboard")
         }
-    },[success])
+    },[success,navigate])
 
     return(
         <div class="row m-5 no-gutters shadow-lg">

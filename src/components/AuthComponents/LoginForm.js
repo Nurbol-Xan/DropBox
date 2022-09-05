@@ -39,7 +39,7 @@ const LoginForm = () => {
         if(success){
             navigate("/dashboard");
         }
-    }, [success])
+    }, [success,navigate])
 
     return (
         <>
