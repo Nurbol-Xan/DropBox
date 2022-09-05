@@ -12,4 +12,16 @@ const firebaseConfig = {
 };
 
 const fire = firebase.initializeApp(firebaseConfig);
+
+export const auth = firebase.auth();
+
+const GoogleProvider = new firebase.auth.GoogleAuthProvider();
+const GithubProvider = new firebase.auth.GithubAuthProvider();
+const FacabookProvider = new firebase.auth.FacebookAuthProvider();
+GoogleProvider.setCustomParameters({ prompt: 'select_account' });
+
+export const signInWithGoogle = () => auth.signInWithPopup(GoogleProvider);
+export const signInWithGithub = () => auth.signInWithPopup(GithubProvider);
+export const signInWithFacebook = () => auth.signInWithPopup(FacabookProvider);
+
 export default fire;

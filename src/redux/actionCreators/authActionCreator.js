@@ -1,7 +1,7 @@
 import * as types from "../actions/authActions";
 import fire  from "../../config/firebase";
 
-const loginUser = (payload) => {
+export const loginUser = (payload) => {
     return {
         type: types.SIGN_IN,
         payload

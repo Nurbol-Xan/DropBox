@@ -1,6 +1,6 @@
-import React, { useEffect } from "react";
-import { useState } from "react";
+import React, { useEffect,useRef,useState  } from "react";
 import { useDispatch } from "react-redux";
+import ReCAPTCHA from "react-google-recaptcha";
 import { useNavigate } from "react-router-dom";
 import { signInUser } from "../../redux/actionCreators/authActionCreator";
 
@@ -8,18 +8,31 @@ const LoginForm = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [success, setSuccess] = useState(false);
+    const [isNotBot,setIsNotBot] = useState(false);
 
     const dispatch = useDispatch();
     const navigate = useNavigate();
+    const captchaRef = useRef(null)
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        if(!email || !password){
+        if(!email || !password) {
             alert("Please fill in all fields");
             return;
         }
 
+        if(!isNotBot) {
+            alert("Please confirm you are not a bot");
+            return;
+        }
         dispatch(signInUser(email, password, setSuccess));
+    }
+
+    const handleReCAPTCHA = (e) => {
+        // console.log("value:" , e)
+        const token = captchaRef.current.getValue();
+        setIsNotBot(token)
+        // captchaRef.current.reset();
     }
 
     useEffect(() => {
@@ -30,7 +43,7 @@ const LoginForm = () => {
 
     return (
         <>
-        <form autoComplete="off" onSubmit={handleSubmit}>
+        <form autoComplete="off" className="form-horizontal shadow-sm px-2" onSubmit={handleSubmit}>
             <div className="form-group my-2">
                 <input 
                 type="email"
@@ -49,7 +62,15 @@ const LoginForm = () => {
                 value={password} 
                 onChange={(e) => setPassword(e.target.value)} />
             </div>
+            <div className="form-group my-2">
+                <ReCAPTCHA
+                    sitekey="6LdNVNEhAAAAAKb07FLHENpJS5c6gFIFasbS8uzn"
+                    onChange={handleReCAPTCHA}
+                    ref={captchaRef}
+                />
+            </div>
             <button type="submit" className="btn btn-primary my-2 form-control">Login</button>
+
         </form>
         </>
     )
