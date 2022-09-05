@@ -20,9 +20,11 @@ const FolderComponent = () => {
     return (
         <>
             {
-                childFolders.length > 0 ? (
+                childFolders.length > 0 || childFiles.length > 0 ? (
                     <>
-                        <ShowItems title={"Created Folders"} type={"folder"} items={childFolders} />
+                        {childFolders.length > 0 && (
+                            <ShowItems title={"Created Folders"} type={"folder"} items={childFolders} />
+                        )}
                         {childFiles.length > 0 && (
                             <ShowItems title={"Created Files"} type={"file"} items={
                                 childFiles.filter((file) => file.data.url === null)
