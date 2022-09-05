@@ -1,6 +1,7 @@
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom"
 import { SignOutUser } from "../../../redux/actionCreators/authActionCreator";
+import '../../../CSS/Navbar.css';
 
 const Navbar = () => {
     const { isAuthenticated, user } = useSelector(state => state.auth);

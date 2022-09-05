@@ -26,7 +26,7 @@ const DashboardPage = () => {
         if(!isLoggedIn){
             navigate("/");
         }
-    });
+    },[navigate,isLoggedIn]);
 
     useEffect(() => {
         if(isLoading && userId){
