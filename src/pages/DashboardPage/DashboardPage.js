@@ -9,10 +9,12 @@ import { getFiles, getFolders } from "../../redux/actionCreators/fileFolderActio
 import FolderComponent from "../../components/DashboardComponents/FolderComponent/FolderComponent";
 import CreateFile from "../../components/DashboardComponents/CreateFile/CreateFile";
 import FileComponent from "../../components/DashboardComponents/FileComponent/FileComponent";
+import UploadFile from "../../components/DashboardComponents/UploadFile/UploadFile";
 
 const DashboardPage = () => {
     const [isCreateFolderModalOpen, setIsCreateFolderModalOpen] = useState(false);
     const [isCreateFileModalOpen, setIsCreateFileModalOpen] = useState(false);
+    const [isFileUploadModalOpen, setIsFileUploadModalOpen] = useState(false);
     const [ showSubBar, setShowSubBar ] = useState(true);
     const { pathname } = useLocation();
 
@@ -57,11 +59,17 @@ const DashboardPage = () => {
                 <CreateFile setIsCreateFileModalOpen={setIsCreateFileModalOpen} />
             )
         }
+        {
+            isFileUploadModalOpen && (
+                <UploadFile setIsFileUploadModalOpen={setIsFileUploadModalOpen} />
+            )
+        }
             <Navbar />
             {showSubBar && (
                 <SubBar 
                     setIsCreateFolderModalOpen={setIsCreateFolderModalOpen}
-                    setIsCreateFileModalOpen={setIsCreateFileModalOpen} />
+                    setIsCreateFileModalOpen={setIsCreateFileModalOpen}
+                    setIsFileUploadModalOpen={setIsFileUploadModalOpen} />
             )}
             <Routes>
                 <Route path="" element={<HomeComponent />} />

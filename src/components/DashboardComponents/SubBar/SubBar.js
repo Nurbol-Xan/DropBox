@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { shallowEqual, useDispatch, useSelector } from "react-redux";
 import { changeFolder } from "../../../redux/actionCreators/fileFolderActionCreator";
 
-const SubBar = ({ setIsCreateFolderModalOpen, setIsCreateFileModalOpen }) => {
+const SubBar = ({ setIsCreateFolderModalOpen, setIsCreateFileModalOpen, setIsFileUploadModalOpen }) => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
 
@@ -65,7 +65,7 @@ const SubBar = ({ setIsCreateFolderModalOpen, setIsCreateFileModalOpen }) => {
 
                 <ul className="navbar-nav ms-auto">
                     <li className="nav-item mx-2">
-                        <button className="btn btn-outline-dark">
+                        <button className="btn btn-outline-dark" onClick={() => setIsFileUploadModalOpen(true)}>
                         <FontAwesomeIcon icon={faFileUpload} /> &nbsp; Upload file</button>
                     </li>
                     <li className="nav-item mx-2">

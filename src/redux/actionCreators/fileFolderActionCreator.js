@@ -107,3 +107,24 @@ export const createFile = (data, setSuccess) => (dispatch) => {
         setSuccess(false);
     })
 }
+
+export const uploadFile = (file, data, setSuccess) => (dispatch) => {
+    const uploadFileRef = firestore.storage().ref(`files/${data.userId}/${data.file.name}`);
+
+    uploadFileRef.put(file).on("state_changed", (snapshot) => {
+        const progress = Math.round(
+            (snapshot.bytesTransferred / snapshot.totalBytes) * 100
+        )
+        console.log("uploading " + progress + "%");
+    },
+    (error) => {
+        console.log(error);
+    },
+    async () => {
+        const fileData = await uploadFileRef.getDownloadURL();
+        console.log(fileData);
+        alert("File uploaded successfully!");
+        setSuccess(true);
+    }
+    )
+}
