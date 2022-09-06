@@ -109,7 +109,7 @@ export const createFile = (data, setSuccess) => (dispatch) => {
 }
 
 export const uploadFile = (file, data, setSuccess) => (dispatch) => {
-    const uploadFileRef = firestore.storage().ref(`files/${data.userId}/${data.file.name}`);
+    const uploadFileRef = firestore.storage().ref(`files/${data.userId}/${data.name}`);
 
     uploadFileRef.put(file).on("state_changed", (snapshot) => {
         const progress = Math.round(
@@ -121,10 +121,19 @@ export const uploadFile = (file, data, setSuccess) => (dispatch) => {
         console.log(error);
     },
     async () => {
-        const fileData = await uploadFileRef.getDownloadURL();
-        console.log(fileData);
-        alert("File uploaded successfully!");
-        setSuccess(true);
+        const fileUrl = await uploadFileRef.getDownloadURL();
+        const fullData = {...data, url: fileUrl};
+        
+        firestore.firestore().collection("files").add(fullData).then(async (file) => {
+            const fileData = await (await file.get()).data();
+            const fileId = file.id;
+
+            dispatch(addFile({data: fileData, docId: fileId}));
+            alert("File uploaded successfully!");
+            setSuccess(true);
+        }).catch(() => {
+            setSuccess(false);
+        })
     }
     )
 }
