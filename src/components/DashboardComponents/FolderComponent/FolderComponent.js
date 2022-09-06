@@ -17,22 +17,25 @@ const FolderComponent = () => {
         ),
     }), shallowEqual);
 
+    const createFiles = childFiles && childFiles.filter((file) => file.data.url === null);
+    const uploadFiles = childFiles && childFiles.filter((file) => file.data.data === null);
+
     return (
         <>
             {
-                childFolders.length > 0 || childFiles.length > 0 ? (
+                childFolders.length > 0 || childFiles.length > 0 || uploadFiles.length > 0 ? (
                     <>
                         {childFolders.length > 0 && (
                             <ShowItems title={"Created Folders"} type={"folder"} items={childFolders} />
                         )}
-                        {childFiles.length > 0 && (
+                        {createFiles.length > 0  && (
                             <ShowItems title={"Created Files"} type={"file"} items={
-                                childFiles.filter((file) => file.data.url === null)
+                                createFiles
                             } />
                         )}
-                        {childFiles.length > 0 && (
+                        {uploadFiles.length > 0 && (
                             <ShowItems title={"Upload Files"} type={"file"} items={
-                                childFiles.filter((file) => file.data.data === null)
+                                uploadFiles
                             } />
                         )}
                     </>
