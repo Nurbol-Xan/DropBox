@@ -64,13 +64,13 @@ const Register = () => {
     },[success,navigate])
 
     return(
-        <div class="row m-5 no-gutters shadow-lg">
+        <div className="row m-5 no-gutters shadow-lg">
             <div className="col-md-6 d-none d-md-block">
             <img src="https://images.unsplash.com/photo-1566888596782-c7f41cc184c5?ixlib=rb-1.2.1&auto=format&fit=crop&w=2134&q=80" className="img-fluid" style={{"minHeight":"100%"}} alt="side login"/>
             </div>
-            <div class="col-md-6 bg-white p-5 text-center my-auto">
-            <h1 classNameName="text-center my-5">Register Here</h1>
-            <div classNameName="col">
+            <div className="col-md-6 bg-white p-5 text-center my-auto">
+            <h1 className="text-center my-5">Register Here</h1>
+            <div className="col">
                 <div className="d-flex justify-content-center row-md-3 center mx-auto mt-5">
                     <button className="btn shadow" onClick={handleGoogle}><img src="https://img.icons8.com/fluency/48/000000/google-logo.png" alt="google"/></button>
                     <button className="btn shadow" onClick={handleGithub}><img src="https://img.icons8.com/ios-filled/50/000000/github.png" alt="github"/></button>
@@ -79,7 +79,7 @@ const Register = () => {
                 <div className="mx-auto mt-5">
                     <RegisterForm />
                     <Link to="/login">
-                        Arlead a member? Login
+                        Already a member? Login
                     </Link>
                 </div> 
             </div>

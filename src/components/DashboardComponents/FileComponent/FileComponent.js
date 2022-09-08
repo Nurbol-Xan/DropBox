@@ -3,6 +3,8 @@ import { shallowEqual, useSelector } from "react-redux";
 import Header from "./Header";
 import CodeEditor from "./CodeEditor";
 import { useEffect, useState } from "react";
+// import { downloadFile } from "../../../redux/actionCreators/fileFolderActionCreator";
+import firebase from '../../../config/firebase'
 
 const FileComponent = () => {
     const { fileId } = useParams();
@@ -27,6 +29,8 @@ const FileComponent = () => {
     }, [currentFile, currentFile?.data.data]);
 
     const downloadFile = () => {
+        const url = firebase.storage().ref(`files/${currentFile.data.userId}/${currentFile.data.name}`).getDownloadURL()
+        console.log(url)
         const element = document.createElement("a");
         element.setAttribute("href", currentFile.data.url)
         element.setAttribute("download", currentFile.data.url);

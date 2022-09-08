@@ -137,3 +137,10 @@ export const uploadFile = (file, data, setSuccess) => (dispatch) => {
     }
     )
 }
+
+export const downloadFile = (data,succes) => {
+    const downloadFileRef = firestore.storage().ref(`files/${data.userId}/${data.name}`).getDownloadURL();
+
+    if(downloadFileRef) return downloadFileRef;
+    return;
+}
