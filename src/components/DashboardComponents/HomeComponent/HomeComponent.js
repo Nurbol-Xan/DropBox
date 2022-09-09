@@ -25,6 +25,7 @@ const HomeComponent = () => {
                     <h1 className="display-1 my-5 text-center">Loading...</h1>
                 ) : (
                     <>
+                    
                     <ShowItems title={"Created Folders"} type={"folder"} items={userFolders} />
                     <ShowItems title={"Create Files"} type={"file"} items={
                         userFiles.filter((file) => file.data.url === null)

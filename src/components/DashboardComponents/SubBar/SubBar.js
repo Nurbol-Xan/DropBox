@@ -65,11 +65,11 @@ const SubBar = ({ setIsCreateFolderModalOpen, setIsCreateFileModalOpen, setIsFil
     return (
         <>
         <div class="cursor-1"></div>
-        <div class="cursor-2"></div>
+        <div class="cursor-2"></div><br /><br /><br />
         <div id="menu-bars" class="fas fa-bars"></div>
         <header>
               <nav className="px-4 mt-2 dashboard">
-                <nav aria-label="breadcrumb" className="ms-5">
+                <nav aria-label="breadcrumb" className="">
                     <ol className="breadcrumb d-flex align-items-center">
                         { 
                             currentFolder !== "root" ? (
@@ -98,27 +98,27 @@ const SubBar = ({ setIsCreateFolderModalOpen, setIsCreateFileModalOpen, setIsFil
                                 </>
                             ) : (
                                 <>
-                                    <li className="breadcrumb-item btn  text-decoration-none fs-3">
-                                        Root
+                                    <li className="text-center pt-3 px-3">
+                                        <h3>Root</h3>
                                     </li>
                                 </>
                             )
                         }
                     </ol>
                 </nav>
-                
             </nav>
-            <nav class="navbar">
-                <ul className="navbar-nav ms-auto">
-                    <li className="nav-item mx-2">
-                        <button className="btn btn-outline-dark" onClick={() => setIsFileUploadModalOpen(true)}>
+            
+            <nav class="navbar nav-button">
+                <ul className="navbar-nav ms-auto"><hr />
+                    <li className="nav-item mx-2 m-3">
+                        <button className="btn btn-outline-light" onClick={() => setIsFileUploadModalOpen(true)}>
                         <FontAwesomeIcon icon={faFileUpload} /> &nbsp; Upload file</button>
                     </li>
-                    <li className="nav-item mx-2">
-                        <button className="btn btn-outline-dark" onClick={() => setIsCreateFileModalOpen(true)}><FontAwesomeIcon icon={faFileCirclePlus} />&nbsp; Create file</button>
+                    <li className="nav-item mx-2 m-3">
+                        <button className="btn btn-outline-light" onClick={() => setIsCreateFileModalOpen(true)}><FontAwesomeIcon icon={faFileCirclePlus} />&nbsp; Create file</button>
                     </li>
-                    <li className="nav-item mx-2">
-                        <button className="btn btn-outline-dark" onClick={() => setIsCreateFolderModalOpen(true)}><FontAwesomeIcon icon={faFolderPlus} />&nbsp; Create folder</button>
+                    <li className="nav-item mx-2 m-3">
+                        <button className="btn btn-outline-light" onClick={() => setIsCreateFolderModalOpen(true)}><FontAwesomeIcon icon={faFolderPlus} />&nbsp; Create folder</button>
                     </li>
                 </ul>
             </nav>
