@@ -29,18 +29,23 @@ const FileComponent = () => {
         }
     }, [currentFile, currentFile?.data.data]);
 
-    const downloadFile = () => {
-        const url = firebase.storage().ref(`files/${currentFile.data.userId}/${currentFile.data.name}`).getDownloadURL()
-        jsDownloader(currentFile.data.url, url, currentFile.data.name)
-        // const element = document.createElement("a");
-        // element.setAttribute("href", currentFile.data.url)
-        // element.setAttribute("download", currentFile.data.url);
-        // element.setAttribute("target", "_blank");
-        // element.style.display = "none";
-        // document.body.appendChild(element);
-
+    const downloadFile = async () => {
+        const url = await firebase.storage().ref(`files/${currentFile.data.userId}/${currentFile.data.name}`).getDownloadURL();
+        fetch(url,{cors:'no-cors'}).then((data) => {
+            // console.log(data);
+        }).catch((err) => {
+            console.log(err);
+        })
+        console.log(url);
+        // jsDownloader(currentFile.data.url, url, currentFile.data.name);
+        const element = document.createElement("a");
+        element.setAttribute("href", currentFile.data.url)
+        element.setAttribute("download", currentFile.data.url);
+        element.setAttribute("target", "_blank");
+        element.style.display = "none";
+        document.body.appendChild(element);
         // element.click();
-        // document.body.removeChild(element);
+        document.body.removeChild(element);
     }
 
     return (
