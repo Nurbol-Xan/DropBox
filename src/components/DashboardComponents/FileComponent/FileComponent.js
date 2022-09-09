@@ -3,7 +3,6 @@ import { shallowEqual, useSelector } from "react-redux";
 import Header from "./Header";
 import CodeEditor from "./CodeEditor";
 import { useEffect, useState } from "react";
-// import { downloadFile } from "../../../redux/actionCreators/fileFolderActionCreator";
 import firebase from '../../../config/firebase'
 
 const FileComponent = () => {
@@ -37,7 +36,11 @@ const FileComponent = () => {
             xhr.onload = (event) => {
                 var blob = xhr.response;
                 //create a file from the returned blob
+
                 var file = new File([blob], "image.png", { type: blob.type });
+
+                var file = new File([blob], currentFile.data.name, { type: blob.type });
+
                 console.log(file);
                 //set the download attribute of the a tag to the name stored in the file
                 //generate a temp url to host the image for download
