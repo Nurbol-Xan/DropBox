@@ -22,7 +22,6 @@ button {
   background-clip: text;
   right: 70%;
   bottom: 2%;
-  filter: blur(1px);
   transform: rotate(30deg);
 }
 
@@ -31,7 +30,6 @@ button {
   font-size: 5rem;
   bottom: 2%;
   right: 55%;
-  filter: blur(1px);
   transform: rotate(-20deg);
 }
 
@@ -40,7 +38,6 @@ button {
   font-size: 5rem;
   bottom: 80%;
   right: 50%;
-  filter: blur(1px);
   transform: rotate(-40deg);
 }
 
@@ -48,7 +45,6 @@ button {
   position: absolute;
   font-size: 5rem;
   bottom: 2%;
-  filter: blur(1px);
   right: 44%;
   transform: rotate(-10deg);
 }
@@ -58,7 +54,6 @@ button {
   font-size: 5rem;
   bottom: 75%;
   right: 37%;
-  filter: blur(1px);
   transform: rotate(50deg);
 }
 
@@ -67,7 +62,6 @@ button {
   font-size: 5rem;
   bottom: 2%;
   right: 30%;
-  filter: blur(1px);
   transform: rotate(10deg);
 }
 .folder7{
@@ -75,7 +69,6 @@ button {
   font-size: 5rem;
   bottom: 80%;
   right: 22%;
-  filter: blur(1px);
   transform: rotate(-30deg);
 }
 .folder8{
@@ -83,7 +76,6 @@ button {
   font-size: 5rem;
   bottom: 80%;
   right: 5%;
-  filter: blur(1px);
   transform: rotate(-10deg);
 }
 .folder9{
@@ -91,7 +83,6 @@ button {
   font-size: 5rem;
   bottom: 2%;
   right: 8%;
-  filter: blur(1px);
   transform: rotate(20deg);
 }
 
@@ -101,7 +92,6 @@ button {
   font-size: 5rem;
   bottom: 80%;
   right: 70%;
-  filter: blur(1px);
   transform: rotate(-20deg);
 }
 .folder12{
@@ -109,7 +99,6 @@ button {
   font-size: 5rem;
   bottom: 2%;
   right: 81%;
-  filter: blur(1px);
   transform: rotate(20deg);
 }
 .folder13{
@@ -117,7 +106,6 @@ button {
   font-size: 5rem;
   bottom: 80%;
   right: 84%;
-  filter: blur(1px);
   transform: rotate(-40deg);
 }
 
