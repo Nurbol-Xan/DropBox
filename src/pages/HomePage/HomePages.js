@@ -14,13 +14,25 @@ const HomePage = () => {
             <div className="home-main">
                 <div className="home-content">
                     <div className="home">
-                        {isLoggedIn?(<Link to='/dashboard' ><div className="wel-btn">Dashboard</div></Link>):(
-                            <Link to='/login' className="wel-btn"><div className="wel-btn">GET STARTED</div></Link>
+                        <h1 className="welcome">Welcome</h1>
+                        {isLoggedIn?(<Link to='/dashboard' className="position-absolute top-50 start-50 translate-middle-x"><button className="wel-btn">Dashboard</button></Link>):(
+                            <Link to='/login' className="position-absolute top-50 start-50 translate-middle-x"><button className="wel-btn">GET STARTED</button></Link>
                         )}
                     </div>
                 </div>
             </div>      
-
+            <div className='folder1'>📁</div>
+            <div className='folder2'>🗂️</div>
+            <div className='folder3'>📑</div>
+            <div className='folder4'>📧</div>
+            <div className='folder5'>🗃️</div>
+            <div className='folder6'>📁</div>
+            <div className='folder7'>🗂️</div>
+            <div className='folder8'>📑</div>
+            <div className='folder9'>📧</div>
+            <div className='folder11'>🗂️</div>
+            <div className='folder12'>📑</div>
+            <div className='folder13'>📧</div>
         </>
     )
 }

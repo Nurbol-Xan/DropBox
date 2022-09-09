@@ -49,7 +49,7 @@ const RegisterForm = () => {
 
     return(
         <form autoComplete="off" onSubmit={handleSubmit}>
-            <div className="form-group my-2">
+            <div className="form-group my-2 mb-3">
                 <input 
                 type="text"
                 name="name"
@@ -58,7 +58,7 @@ const RegisterForm = () => {
                 value={name} 
                 onChange={(e) => setName(e.target.value)} />
             </div>
-            <div className="form-group my-2">
+            <div className="form-group my-2 mb-3">
                 <input 
                 type="email"
                 name="email"
@@ -67,7 +67,7 @@ const RegisterForm = () => {
                 value={email} 
                 onChange={(e) => setEmail(e.target.value)} />
             </div>
-            <div className="form-group my-2">
+            <div className="form-group my-2 mb-3">
                 <input 
                 type="password"
                 name="password"
@@ -76,7 +76,7 @@ const RegisterForm = () => {
                 value={password} 
                 onChange={(e) => setPassword(e.target.value)} />
             </div>
-            <div className="form-group my-2">
+            <div className="form-group my-2 mb-3">
                 <input 
                 type="password"
                 name="passwordCon"

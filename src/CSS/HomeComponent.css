@@ -1,7 +1,6 @@
 .home-main {
   height: 90vh;
   background-color: #10151B;
-  background: url(https://wallpaperaccess.com/full/6810534.jpg) no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -12,6 +11,13 @@
   font-family: "Oswald", sans-serif;
   -webkit-font-smoothing: antialiased;
   font-smoothing: antialiased;
+}
+
+.welcome{
+  font-size: 10vh;
+  text-align: center;
+  color: #66fcf1;
+  margin: 0 auto;
 }
 
 .home {
@@ -30,8 +36,7 @@
   width: 170px;
   height: 60px;
   padding: 6px 0 0 3px;
-  margin-top: 250px;
-  border: 2px solid #66fcf1;
+  border: 1px solid #66fcf1;
   border-radius: 2px;
   background: none;
   font-size: 16px;
@@ -41,15 +46,10 @@
   text-decoration: none;
   font-weight: 600;
   text-transform: uppercase;
-  vertical-align: middle;
   text-align: center;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  -webkit-transition: background .4s, color .4s;
-  transition: background .4s, color .4s;
-  cursor: pointer;
 }
+
+
 
 .wel-btn:hover {
   background: #66fcf1;

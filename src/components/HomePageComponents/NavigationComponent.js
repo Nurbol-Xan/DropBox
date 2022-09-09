@@ -10,7 +10,7 @@ const NavigationComponent = () => {
 
     return( 
         <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
-            <Link className="navbar-brand ms-5" to="/">REact APP</Link>
+            <Link className="navbar-brand ms-5" to="/">DropBox</Link>
 
             <ul className="navbar-nav ms-auto me-5">
                 {

@@ -54,7 +54,7 @@ const SubBar = ({ setIsCreateFolderModalOpen, setIsCreateFileModalOpen, setIsFil
                                 </>
                             ) : (
                                 <>
-                                    <li className="breadcrumb-item active">
+                                    <li className="breadcrumb-item active pt-4">
                                         Root
                                     </li>
                                 </>

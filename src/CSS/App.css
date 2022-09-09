@@ -6,3 +6,119 @@ div {
 button {
   font-family: 'Source Sans Pro', sans-serif;
 }
+
+.App {
+  height: 100%;
+  width: 100%;
+  position: relative;
+  background-color: #10151B;
+  display: flex;
+  flex-direction: column;
+}
+
+.folder1{
+  position: absolute;
+  font-size: 5rem;
+  background-clip: text;
+  right: 70%;
+  bottom: 2%;
+  filter: blur(1px);
+  transform: rotate(30deg);
+}
+
+.folder2{
+  position: absolute;
+  font-size: 5rem;
+  bottom: 2%;
+  right: 55%;
+  filter: blur(1px);
+  transform: rotate(-20deg);
+}
+
+.folder3{
+  position: absolute;
+  font-size: 5rem;
+  bottom: 80%;
+  right: 50%;
+  filter: blur(1px);
+  transform: rotate(-40deg);
+}
+
+.folder4{
+  position: absolute;
+  font-size: 5rem;
+  bottom: 2%;
+  filter: blur(1px);
+  right: 44%;
+  transform: rotate(-10deg);
+}
+
+.folder5{
+  position: absolute;
+  font-size: 5rem;
+  bottom: 75%;
+  right: 37%;
+  filter: blur(1px);
+  transform: rotate(50deg);
+}
+
+.folder6{
+  position: absolute;
+  font-size: 5rem;
+  bottom: 2%;
+  right: 30%;
+  filter: blur(1px);
+  transform: rotate(10deg);
+}
+.folder7{
+  position: absolute;
+  font-size: 5rem;
+  bottom: 80%;
+  right: 22%;
+  filter: blur(1px);
+  transform: rotate(-30deg);
+}
+.folder8{
+  position: absolute;
+  font-size: 5rem;
+  bottom: 80%;
+  right: 5%;
+  filter: blur(1px);
+  transform: rotate(-10deg);
+}
+.folder9{
+  position: absolute;
+  font-size: 5rem;
+  bottom: 2%;
+  right: 8%;
+  filter: blur(1px);
+  transform: rotate(20deg);
+}
+
+
+.folder11{
+  position: absolute;
+  font-size: 5rem;
+  bottom: 80%;
+  right: 70%;
+  filter: blur(1px);
+  transform: rotate(-20deg);
+}
+.folder12{
+  position: absolute;
+  font-size: 5rem;
+  bottom: 2%;
+  right: 81%;
+  filter: blur(1px);
+  transform: rotate(20deg);
+}
+.folder13{
+  position: absolute;
+  font-size: 5rem;
+  bottom: 80%;
+  right: 84%;
+  filter: blur(1px);
+  transform: rotate(-40deg);
+}
+
+

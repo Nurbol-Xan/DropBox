@@ -48,7 +48,7 @@ const DashboardPage = () => {
     }, [pathname])
 
     return (
-        <>
+        <div className="text-white">
         {
             isCreateFolderModalOpen && (
                 <CreateFolder setIsCreateFolderModalOpen={setIsCreateFolderModalOpen} />
@@ -76,7 +76,7 @@ const DashboardPage = () => {
                 <Route path="folder/:folderId" element={< FolderComponent />} />
                 <Route path="file/:fileId" element={< FileComponent />} />
             </Routes>
-        </>
+        </div>
     )
 }
 

@@ -43,8 +43,8 @@ const LoginForm = () => {
 
     return (
         <>
-        <form autoComplete="off" className="form-horizontal shadow-sm px-2" onSubmit={handleSubmit}>
-            <div className="form-group my-2">
+        <form autoComplete="off" className="form-horizontal shadow-sm px-2 bg-white text-dark" onSubmit={handleSubmit}>
+            <div className="form-group my-2 mb-4">
                 <input 
                 type="email"
                 name="email"
@@ -53,7 +53,7 @@ const LoginForm = () => {
                 value={email} 
                 onChange={(e) => setEmail(e.target.value)} />
             </div>
-            <div className="form-group my-2">
+            <div className="form-group my-2 mt-2 mb-4">
                 <input 
                 type="password"
                 name="password"
