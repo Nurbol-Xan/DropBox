@@ -45,6 +45,9 @@ const DashboardPage = () => {
             console.log("pathname", pathname);
             setShowSubBar(false);
         }
+        else {
+            setShowSubBar(true);
+        }
     }, [pathname])
 
     return (
