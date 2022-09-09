@@ -98,7 +98,7 @@ const SubBar = ({ setIsCreateFolderModalOpen, setIsCreateFileModalOpen, setIsFil
                                 </>
                             ) : (
                                 <>
-                                    <li className="breadcrumb-item   text-decoration-none fs-3">
+                                    <li className="breadcrumb-item btn  text-decoration-none fs-3">
                                         Root
                                     </li>
                                 </>
