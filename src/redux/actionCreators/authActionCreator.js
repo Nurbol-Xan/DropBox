@@ -81,5 +81,8 @@ export const checkIsLoggedIn = () => (dispatch) => {
                 displayName: user.displayName,
             }))
         }
+        else {
+            dispatch(logoutUser());
+        }
     })
 }

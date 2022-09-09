@@ -28,7 +28,7 @@ const DashboardPage = () => {
     const dispatch = useDispatch();
 
     useEffect(() => {
-        if(!isLoggedIn){
+        if(isLoggedIn===false){
             navigate("/");
         }
     },[navigate,isLoggedIn]);

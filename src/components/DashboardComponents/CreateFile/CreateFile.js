@@ -6,6 +6,7 @@ import { shallowEqual, useDispatch, useSelector } from "react-redux";
 
 const CreateFile = ({setIsCreateFileModalOpen}) => {
     const [ filename, setFilename ] = useState("");
+    const [ extension, setExtension ] = useState("txt");
     const [ success, setSuccess] = useState(false);
 
     const { userFiles, user, currentFolder, currentFolderData } = useSelector((state) => ({
@@ -26,44 +27,70 @@ const CreateFile = ({setIsCreateFileModalOpen}) => {
             setSuccess(false);
             setIsCreateFileModalOpen(false);
         }
-    })
+    },[success])
 
-    const checkFileAlreadyPresent = (name, ext) => {
-        if(!ext){
-            name = name + ".txt";
+    const setTypeFile = (name) => {
+        let typeExists = name.lastIndexOf(".");
+        if(typeExists===-1) {
+            return;
         }
-            const filePresent = userFiles.filter((folder) => folder.data.parent === currentFolder)
-            .find((file) => file.data.name === name);
-            if(filePresent) return true;
-            else return false;
-        
+
+        let fileType=name.substring(typeExists + 1, name.length);
+        if(fileType) setExtension(fileType);
+        return fileType;
+    }
+
+    // if file exists then add file's name indexed number like name(0)
+    const setFileName = (name) => {
+        let typeExists = name.lastIndexOf("."),
+            fileTitle,
+            existFile,
+            index=0,
+            updatedName;
+
+        if(typeExists===-1) {
+            fileTitle = name;
+            updatedName = `${fileTitle}.${extension}`;
+        }
+        else {
+            fileTitle = name.substring(0, name.lastIndexOf("."));
+            updatedName = name;
+        }
+
+        existFile = userFiles.filter((folder) => folder.data.parent === currentFolder)
+        .find((file) => file.data.name === updatedName);
+        console.log(existFile,updatedName,fileTitle,name,filename);
+        while(existFile) {
+            fileTitle = `${name}(${index++})`;
+            updatedName = `${fileTitle}.${extension}`
+            console.log(fileTitle,updatedName);
+            existFile = userFiles.filter((folder) => folder.data.parent === currentFolder)
+            .find((file) => file.data.name === updatedName);
+        }
+        return updatedName;
     };
 
     const handleSubmit = (e) => {
         e.preventDefault();
         if(filename){
             if(filename.length > 3){
-                let extension = false;
-                if(filename.split(".").length > 1){
-                    extension = true;
-                }
-                if(!checkFileAlreadyPresent(filename, extension)){
-                    const data = {
-                        createdAt: new Date(),
-                        createdBy: user.displayName,
-                        lastAccessed: null,
-                        name: extension ? filename : `${filename}.txt`,
-                        parent: currentFolder,
-                        path: currentFolder === "root" ? []: [...currentFolderData?.data.path, currentFolder],
-                        updateAt: new Date(),
-                        userId: user.uid,
-                        extension: extension ? filename.split(".")[1] : "txt",
-                        data: "",
-                        url: null,
-                    };
-                    dispatch(createFile(data, setSuccess));
-                    // console.log("data", data);
-                }else alert("File already present!");
+                let type = setTypeFile(filename);
+                let updatedName = setFileName(filename);
+                console.log(extension);
+                const data = {
+                    createdAt: new Date(),
+                    createdBy: user.displayName,
+                    lastAccessed: null,
+                    name: updatedName,
+                    parent: currentFolder,
+                    path: currentFolder === "root" ? []: [...currentFolderData?.data.path, currentFolder],
+                    updateAt: new Date(),
+                    userId: user.uid,
+                    extension: type,
+                    data: "",
+                    url: null,
+                };
+                dispatch(createFile(data, setSuccess));
             }else{
                 alert("File name must be at least 3 characters!");
             }

@@ -1,7 +1,7 @@
 import * as types from "../actions/authActions";
 
 const initialState = {
-    isAuthenticated: false,
+    isAuthenticated: undefined,
     user: {},
 };
 
