@@ -19,7 +19,7 @@ const HomeComponent = () => {
     )
 
     return (
-        <div className="col-md-12 w-100">
+        <div className="col-md-12 w-100 dashboard" >
             {
                 isLoading ? (
                     <h1 className="display-1 my-5 text-center">Loading...</h1>

@@ -24,16 +24,42 @@ const SubBar = ({ setIsCreateFolderModalOpen, setIsCreateFileModalOpen, setIsFil
     };
 
     useEffect(() => {
-        const script = document.createElement('script');
-      
-        script.src = "canvas.js";
-        script.async = true;
-      
-        document.body.appendChild(script);
-      
-        return () => {
-          document.body.removeChild(script);
+        let menu = document.querySelector('#menu-bars');
+        let header = document.querySelector('header');
+
+        menu.onclick = () =>{
+            menu.classList.toggle('fa-times');
+            header.classList.toggle('active');
         }
+
+        window.onscroll = () =>{
+            menu.classList.remove('fa-times');
+            header.classList.remove('active');
+        }
+
+        let cursor1 = document.querySelector('.cursor-1');
+        let cursor2 = document.querySelector('.cursor-2');
+
+        window.onmousemove = (e) =>{
+            cursor1.style.top = e.pageY + 'px';
+            cursor1.style.left = e.pageX + 'px';
+            cursor2.style.top = e.pageY + 'px';
+            cursor2.style.left = e.pageX + 'px';
+        }
+
+        document.querySelectorAll('a').forEach(links =>{
+
+            links.onmouseenter = () =>{
+                cursor1.classList.add('active');
+                cursor2.classList.add('active');
+            }
+
+            links.onmouseleave = () =>{
+                cursor1.classList.remove('active');
+                cursor2.classList.remove('active');
+            }
+
+        });
     }, []);
 
     return (
@@ -42,37 +68,19 @@ const SubBar = ({ setIsCreateFolderModalOpen, setIsCreateFileModalOpen, setIsFil
         <div class="cursor-2"></div>
         <div id="menu-bars" class="fas fa-bars"></div>
         <header>
-
-            <a href="#" class="logo"> <span>Nurbol</span> Xaydaraliyev </a>
-        
-            <nav class="navbar">
-                <a href="#home">home</a>
-                <a href="#about">about</a>
-                <a href="#experience">experience</a>
-                <a href="#portfolio">portfolio</a>
-                <a href="#contact">contact</a>
-            </nav>
-        
-            <div class="follow">
-                <a href="https://t.me/nurbol_xan" class="fab fa-telegram"></a>
-                <a href="https://github.com/Nurbol-Xan" class="fab fa-github"></a>
-                <a href="https://www.linkedin.com/in/nurbol-xaydaraliyev-39b199242/" class="fab fa-linkedin"></a>
-            </div>
-        
-        </header>
-            <nav className="navbar navbar-expand-lg navbar-dark bg-white px-4 mt-2">
+              <nav className="px-4 mt-2 dashboard">
                 <nav aria-label="breadcrumb" className="ms-5">
                     <ol className="breadcrumb d-flex align-items-center">
-                        {
+                        { 
                             currentFolder !== "root" ? (
                                 <>
                                     <button onClick={() => handleNavigate("/dashboard", "root")}
-                                    className="breadcrumb-item btn btn-link text-decoration-none">
+                                    className="breadcrumb-item btn btn-link text-decoration-none fs-3">
                                         Root
                                     </button>
                                     {
                                         currentFolderData?.data.path.map((folder, index ) => (
-                                            <button key={index} className="breadcrumb-item btn btn-link"
+                                            <button key={index} className="breadcrumb-item btn btn-link text-decoration-none fs-3"
                                             onClick={() => 
                                                 handleNavigate(
                                                     `/dashboard/folder/${
@@ -84,13 +92,13 @@ const SubBar = ({ setIsCreateFolderModalOpen, setIsCreateFileModalOpen, setIsFil
                                                 {userFolders.find((fldr) => folder === fldr.docId).data.name}
                                             </button>
                                         ))}
-                                        <li className="breadcrumb-item active">
+                                        <li className="breadcrumb-item active fs-4">
                                             {currentFolderData?.data.name}
                                         </li>
                                 </>
                             ) : (
                                 <>
-                                    <li className="breadcrumb-item active pt-4">
+                                    <li className="breadcrumb-item   text-decoration-none fs-3">
                                         Root
                                     </li>
                                 </>
@@ -98,7 +106,9 @@ const SubBar = ({ setIsCreateFolderModalOpen, setIsCreateFileModalOpen, setIsFil
                         }
                     </ol>
                 </nav>
-
+                
+            </nav>
+            <nav class="navbar">
                 <ul className="navbar-nav ms-auto">
                     <li className="nav-item mx-2">
                         <button className="btn btn-outline-dark" onClick={() => setIsFileUploadModalOpen(true)}>
@@ -112,6 +122,12 @@ const SubBar = ({ setIsCreateFolderModalOpen, setIsCreateFileModalOpen, setIsFil
                     </li>
                 </ul>
             </nav>
+        
+        
+          
+
+        </header>
+            
             <script crossorigin src="canvas.js"></script>
         </>
     )

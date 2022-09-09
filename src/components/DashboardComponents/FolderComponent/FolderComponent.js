@@ -21,7 +21,7 @@ const FolderComponent = () => {
     const uploadFiles = childFiles && childFiles.filter((file) => file.data.data === null);
 
     return (
-        <>
+        <div className="dashboard">
             {
                 childFolders.length > 0 || childFiles.length > 0 || uploadFiles.length > 0 ? (
                     <>
@@ -43,7 +43,7 @@ const FolderComponent = () => {
                     <p className="text-center my-5">Empty Folder</p>
                 )
             }
-        </>
+        </div>
     )
 }
 
