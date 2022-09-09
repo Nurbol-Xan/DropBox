@@ -24,6 +24,28 @@ const SubBar = ({ setIsCreateFolderModalOpen, setIsCreateFileModalOpen, setIsFil
 
     return (
         <>
+        <div class="cursor-1"></div>
+        <div class="cursor-2"></div>
+        <div id="menu-bars" class="fas fa-bars"></div>
+        <header>
+
+            <a href="#" class="logo"> <span>Nurbol</span> Xaydaraliyev </a>
+        
+            <nav class="navbar">
+                <a href="#home">home</a>
+                <a href="#about">about</a>
+                <a href="#experience">experience</a>
+                <a href="#portfolio">portfolio</a>
+                <a href="#contact">contact</a>
+            </nav>
+        
+            <div class="follow">
+                <a href="https://t.me/nurbol_xan" class="fab fa-telegram"></a>
+                <a href="https://github.com/Nurbol-Xan" class="fab fa-github"></a>
+                <a href="https://www.linkedin.com/in/nurbol-xaydaraliyev-39b199242/" class="fab fa-linkedin"></a>
+            </div>
+        
+        </header>
             <nav className="navbar navbar-expand-lg navbar-dark bg-white px-4 mt-2">
                 <nav aria-label="breadcrumb" className="ms-5">
                     <ol className="breadcrumb d-flex align-items-center">
