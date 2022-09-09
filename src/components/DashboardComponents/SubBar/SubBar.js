@@ -64,8 +64,9 @@ const SubBar = ({ setIsCreateFolderModalOpen, setIsCreateFileModalOpen, setIsFil
 
     return (
         <>
-        <div class="cursor-1"></div>
-        <div class="cursor-2"></div><br /><br /><br />
+        {/* <div class="cursor-1"></div>
+        <div class="cursor-2"></div> */}
+        <br /><br /><br />
         <div id="menu-bars" class="fas fa-bars"></div>
         <header>
               <nav className="px-4 mt-2 dashboard">

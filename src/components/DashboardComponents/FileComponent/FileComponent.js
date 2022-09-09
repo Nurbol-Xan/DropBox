@@ -5,7 +5,6 @@ import CodeEditor from "./CodeEditor";
 import { useEffect, useState } from "react";
 // import { downloadFile } from "../../../redux/actionCreators/fileFolderActionCreator";
 import firebase from '../../../config/firebase'
-import jsDownloader from 'js-file-download'
 
 const FileComponent = () => {
     const { fileId } = useParams();
@@ -30,26 +29,29 @@ const FileComponent = () => {
     }, [currentFile, currentFile?.data.data]);
 
     const downloadFile = async () => {
-        const url = await firebase.storage().ref(`files/${currentFile.data.userId}/${currentFile.data.name}`).getDownloadURL();
-        fetch(url,{cors:'no-cors'}).then((data) => {
-            // console.log(data);
-        }).catch((err) => {
-            console.log(err);
-        })
-        console.log(url);
-        // jsDownloader(currentFile.data.url, url, currentFile.data.name);
-        const element = document.createElement("a");
-        element.setAttribute("href", currentFile.data.url)
-        element.setAttribute("download", currentFile.data.url);
-        element.setAttribute("target", "_blank");
-        element.style.display = "none";
-        document.body.appendChild(element);
-        // element.click();
-
-        // document.body.removeChild(element);
-
-
-        document.body.removeChild(element);
+        firebase.storage().ref(`files/${currentFile.data.userId}/${currentFile.data.name}`).getDownloadURL()
+        .then((url) => {
+            // download image directly via url
+            var xhr = new XMLHttpRequest();
+            xhr.responseType = 'blob';
+            xhr.onload = (event) => {
+                var blob = xhr.response;
+                //create a file from the returned blob
+                var file = new File([blob], "image.png", { type: blob.type });
+                console.log(file);
+                //set the download attribute of the a tag to the name stored in the file
+                //generate a temp url to host the image for download
+                const element = document.createElement("a");
+                element.setAttribute("target", "_blank");
+                element.href = URL.createObjectURL(file);
+                element.download = file.name;
+                document.body.appendChild(element);
+                element.click();
+                document.body.removeChild(element);
+            };
+            xhr.open('GET', url,true);
+            xhr.send();
+        });
     }
 
     return (
