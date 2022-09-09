@@ -1,71 +1,55 @@
-# Getting Started with Create React App
+# Welcome to My Dropbox
+## Installation
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Try the project: [DropBox](https://dropbox-by-xan.web.app/)
 
-## Available Scripts
+## **Contents**:
 
-In the project directory, you can run:
+- [Instruments](#instruments)
+- [About](#about)
+- [Homepage](#homepage)
+    - [Instructions for use](#instructions-for-use)
+- [Conclusion](#conclusion)
 
-### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Instruments
+## Task
+![React](https://img.shields.io/badge/react%20version-18.0.2-green)
+![Yarn Version](https://img.shields.io/badge/yarn%20version-4.0.1-yellow)
+![Firebase](https://img.shields.io/badge/firabase-Firebase-red)
 
-### `npm test`
+## About
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Description
+Dropbox is our interpretation of the real [Dropbox](https://www.dropbox.com/ru/) website. You create a small repository for yourself on this website and you can put files in it in various formats. IF YOU HAVE MORE PICTURES YOU CAN OPEN ANOTHER FILE.
 
-### `npm run build`
+### **Instructions for use:**
+## Usage
+#
+> ### You can use dropbox login github, google account, facebook.Register and login to the created account:
+#
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+![This is a register gif](/readme-gif/login.gif)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+#
+> ### You can create files and folders. And you can upload the file from your computer.Create folders and files:
+#
+![This is  create gif](/readme-gif/create.gif)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+> Upload file:
 
-### `npm run eject`
+![This is  upload gif](/readme-gif/file-folder.gif)
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+#
+> ### If you want to upload files with the same name. The program creates versions of the file:
+#
+![This is  version gif](/readme-gif/version.gif)
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### The Core Team
+> Abdullox Athamov
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+> Nurbol Xaydaraliyev (Nurbol-Xan)
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
-# DropBox
+<span><i>Made at <a href='https://qwasar.io'>Qwasar Silicon Valley</a></i></span>
+<span><img alt='Qwasar Silicon Valley Logo' src='https://storage.googleapis.com/qwasar-public/qwasar-logo_50x50.png' width='20px'></span>
