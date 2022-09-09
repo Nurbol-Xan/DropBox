@@ -4,6 +4,7 @@ import "../../../CSS/SubBar.css";
 import { useNavigate } from "react-router-dom";
 import { shallowEqual, useDispatch, useSelector } from "react-redux";
 import { changeFolder } from "../../../redux/actionCreators/fileFolderActionCreator";
+import { useEffect } from "react";
 
 const SubBar = ({ setIsCreateFolderModalOpen, setIsCreateFileModalOpen, setIsFileUploadModalOpen }) => {
     const navigate = useNavigate();
@@ -21,6 +22,19 @@ const SubBar = ({ setIsCreateFolderModalOpen, setIsCreateFileModalOpen, setIsFil
         navigate(link);
         dispatch(changeFolder(id));
     };
+
+    useEffect(() => {
+        const script = document.createElement('script');
+      
+        script.src = "canvas.js";
+        script.async = true;
+      
+        document.body.appendChild(script);
+      
+        return () => {
+          document.body.removeChild(script);
+        }
+    }, []);
 
     return (
         <>
@@ -98,6 +112,7 @@ const SubBar = ({ setIsCreateFolderModalOpen, setIsCreateFileModalOpen, setIsFil
                     </li>
                 </ul>
             </nav>
+            <script crossorigin src="canvas.js"></script>
         </>
     )
 }
