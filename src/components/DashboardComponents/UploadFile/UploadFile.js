@@ -26,35 +26,40 @@ const UploadFile = ({setIsFileUploadModalOpen}) => {
             setSuccess(false);
             setIsFileUploadModalOpen(false);
         }
-    })
+    },[success])
 
     const checkFileAlreadyPresent = (name) => {
-        const filePresent = userFiles.filter((folder) => folder.data.parent === currentFolder)
-        .find((file) => file.data.name === name);
-        if(filePresent) return true;
-        else return false;
+        let filePresent = userFiles.filter((folder) => folder.data.parent === currentFolder)
+        .find((file) => file.data.name === name),index=0,updatedName=name;
+
+        while(filePresent) {
+            updatedName = `${name}(${index++})`
+            console.log(name)
+            filePresent = userFiles.filter((folder) => folder.data.parent === currentFolder)
+            .find((file) => file.data.name === updatedName)
+        }
+        return updatedName;
     };
 
     const handleSubmit = (e) => {
         e.preventDefault();
         if(file){
-                if(!checkFileAlreadyPresent(file.name)){
-                    const data = {
-                        createdAt: new Date(),
-                        createdBy: user.displayName,
-                        lastAccessed: null,
-                        name: file.name,
-                        parent: currentFolder,
-                        path: currentFolder === "root" ? []: [...currentFolderData?.data.path, currentFolder],
-                        updateAt: new Date(),
-                        userId: user.uid,
-                        extension: file.name.split(".")[1],
-                        data: null,
-                        url: "",
-                    };
-                    dispatch(uploadFile(file, data, setSuccess));
-                    // console.log("data", data);
-                }else alert("File already present!");
+            let updatedName = checkFileAlreadyPresent(file.name)
+            const data = {
+                createdAt: new Date(),
+                createdBy: user.displayName,
+                lastAccessed: null,
+                name: updatedName,
+                parent: currentFolder,
+                path: currentFolder === "root" ? []: [...currentFolderData?.data.path, currentFolder],
+                updateAt: new Date(),
+                userId: user.uid,
+                extension: file.name.split(".")[1],
+                data: null,
+                url: "",
+            };
+            console.log(data);
+            dispatch(uploadFile(file, data, setSuccess));
         }else{
             alert("File name can't be empty! ");
         }

@@ -19,31 +19,37 @@ const CreateFolder = ({setIsCreateFolderModalOpen}) => {
 
     const dispatch = useDispatch();
 
-    const checkFolderAlreadyPresent = (name) => {
-            const folderPresent = userFolders.filter((folder) => folder.data.parent === currentFolder)
-            .find((folder) => folder.data.name === name);
-            if(folderPresent) return true;
-            else return false;
+    const setUpdatedName = (name) => {
+        let folderPresent = userFolders.filter((folder) => folder.data.parent === currentFolder)
+            .find((folder) => folder.data.name === name),
+            updatedName=name,
+            index=0;
         
+        while(folderPresent) {
+            updatedName = `${name}(${index++})`;
+            console.log(name);
+            folderPresent = userFolders.filter((folder) => folder.data.parent === currentFolder)
+            .find((folder) => folder.data.name === updatedName);
+        }
+        return updatedName;
     };
 
     const handleSubmit = (e) => {
         e.preventDefault();
         if(foldername){
             if(foldername.length > 3){
-                if(!checkFolderAlreadyPresent(foldername)){
-                    const data = {
-                        createdAt: new Date(),
-                        createdBy: user.displayName,
-                        lastAccessed: null,
-                        name: foldername,
-                        parent: currentFolder,
-                        path: currentFolder === "root" ? []: [...currentFolderData?.data.path, currentFolder],
-                        updateAt: new Date(),
-                        userId: user.uid,
-                    };
-                    dispatch(createFolder(data));
-                }else alert("Folder already present!");
+                let updatedName = setUpdatedName(foldername);
+                const data = {
+                    createdAt: new Date(),
+                    createdBy: user.displayName,
+                    lastAccessed: null,
+                    name: updatedName,
+                    parent: currentFolder,
+                    path: currentFolder === "root" ? []: [...currentFolderData?.data.path, currentFolder],
+                    updateAt: new Date(),
+                    userId: user.uid,
+                };
+                dispatch(createFolder(data));
             }else{
                 alert("Folder name must be at least 3 characters!");
             }

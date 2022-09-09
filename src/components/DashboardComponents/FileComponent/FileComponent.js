@@ -5,6 +5,7 @@ import CodeEditor from "./CodeEditor";
 import { useEffect, useState } from "react";
 // import { downloadFile } from "../../../redux/actionCreators/fileFolderActionCreator";
 import firebase from '../../../config/firebase'
+import jsDownloader from 'js-file-download'
 
 const FileComponent = () => {
     const { fileId } = useParams();
@@ -30,16 +31,16 @@ const FileComponent = () => {
 
     const downloadFile = () => {
         const url = firebase.storage().ref(`files/${currentFile.data.userId}/${currentFile.data.name}`).getDownloadURL()
-        console.log(url)
-        const element = document.createElement("a");
-        element.setAttribute("href", currentFile.data.url)
-        element.setAttribute("download", currentFile.data.url);
-        element.setAttribute("target", "_blank");
-        element.style.display = "none";
-        document.body.appendChild(element);
+        jsDownloader(currentFile.data.url, url, currentFile.data.name)
+        // const element = document.createElement("a");
+        // element.setAttribute("href", currentFile.data.url)
+        // element.setAttribute("download", currentFile.data.url);
+        // element.setAttribute("target", "_blank");
+        // element.style.display = "none";
+        // document.body.appendChild(element);
 
-        element.click();
-        document.body.removeChild(element);
+        // element.click();
+        // document.body.removeChild(element);
     }
 
     return (
