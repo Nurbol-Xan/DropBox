@@ -70,18 +70,18 @@ const SubBar = ({ setIsCreateFolderModalOpen, setIsCreateFileModalOpen, setIsFil
         <div id="menu-bars" class="fas fa-bars"></div>
         <header>
               <nav className="px-4 mt-2 dashboard">
-                <nav aria-label="breadcrumb" className="">
+                <nav  className="">
                     <ol className="breadcrumb d-flex align-items-center">
                         { 
                             currentFolder !== "root" ? (
                                 <>
                                     <button onClick={() => handleNavigate("/dashboard", "root")}
-                                    className="breadcrumb-item btn btn-link text-decoration-none fs-3">
-                                        Root
+                                    className="btn btn-link text-decoration-none fs-3">
+                                        ˅ Root
                                     </button>
                                     {
                                         currentFolderData?.data.path.map((folder, index ) => (
-                                            <button key={index} className="breadcrumb-item btn btn-link text-decoration-none fs-3"
+                                            <button key={index} className="btn btn-link text-decoration-none fs-3"
                                             onClick={() => 
                                                 handleNavigate(
                                                     `/dashboard/folder/${
@@ -90,11 +90,11 @@ const SubBar = ({ setIsCreateFolderModalOpen, setIsCreateFileModalOpen, setIsFil
                                                     userFolders.find((fldr) => folder === fldr.docId).docId
                                                 )
                                             }>
-                                                {userFolders.find((fldr) => folder === fldr.docId).data.name}
+                                                <span className="p-file">˅ </span>{userFolders.find((fldr) => folder === fldr.docId).data.name}
                                             </button>
                                         ))}
-                                        <li className="breadcrumb-item active fs-4">
-                                            {currentFolderData?.data.name}
+                                        <li className="breadcrumb-item active margin text-decoration-none fs-3">
+                                            > {currentFolderData?.data.name}
                                         </li>
                                 </>
                             ) : (

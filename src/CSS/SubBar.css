@@ -3,7 +3,13 @@
     --main-color:#048d4d;
 }
 
+.p-file{
+    transform: rotate(180deg);
+}
 
+.margin{
+    margin-left: 5%;
+}
 
 section{
     padding:1rem 5%;
