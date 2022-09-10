@@ -91,7 +91,7 @@ const SubBar = ({ setIsCreateFolderModalOpen, setIsCreateFileModalOpen, setIsFil
                                                 )
                                             }>
                                                 <span className="p-file">˅ </span>{userFolders.find((fldr) => folder === fldr.docId).data.name}
-                                            </button>
+                                                </button>
                                         ))}
                                         <li className="breadcrumb-item active margin text-decoration-none fs-3">
                                             > {currentFolderData?.data.name}

@@ -74,8 +74,8 @@ const Register = () => {
             <div className="col">
                 <div className="d-flex justify-content-center row-md-3 center mx-auto mt-5">
                     <button className="btn shadow me-3" onClick={handleGoogle}><img src="https://img.icons8.com/fluency/48/000000/google-logo.png" alt="google"/>Google</button>
-                    <button className="btn shadow me-3" onClick={handleGithub}><img src="https://img.icons8.com/ios-filled/50/000000/github.png" alt="github"/>Github</button>
-                    <button className="btn shadow me-3" onClick={handleFacebook}><img src="https://img.icons8.com/fluency/48/000000/facebook-new.png" alt="facebook"/>Facebook</button>
+                    <button className="btn shadow me-3" onClick={handleFacebook}><img src="https://img.icons8.com/ios-filled/50/000000/github.png" alt="github"/>Github</button>
+                    <button className="btn shadow me-3" onClick={handleGithub}><img src="https://img.icons8.com/fluency/48/000000/facebook-new.png" alt="facebook"/>Facebook</button>
                 </div>
                 <div className="mx-auto mt-5">
                     <RegisterForm />
